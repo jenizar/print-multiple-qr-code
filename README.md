@@ -1,7 +1,7 @@
 # print-multiple-qr-code
 Print Multiple Qr Code in SAP BTP using Python Flask
 
-Deploy Print Multiple Qr Code in SAP BTP using Python Flask
+Deploy Print Multiple Qr Code App in SAP BTP using Python Flask
 
 $>cf push
 
