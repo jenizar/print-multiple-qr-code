@@ -1,0 +1,6 @@
+---
+applications:
+- name: print-multiple-qris
+  memory: 256MB
+  disk_quota: 256MB
+  random-route: true

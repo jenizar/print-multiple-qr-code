@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Multiple QR Codes</title>
+    <style>
+    th,
+    td {
+      border: 1px solid rgb(160 160 160);
+      padding: 8px 10px;
+    }
+   
+    th[scope='col'] {
+      background-color: #fff;
+      color: #505050;
+    }
+   
+    th[scope='row'] {
+      background-color: #d6ecd4;
+    }
+   
+    td {
+      text-align: center;
+    }
+   
+    tr:nth-of-type(even) {
+      background-color: #eee;
+    }
+   
+    table {
+      border-collapse: collapse;
+      border: 2px solid rgb(140 140 140);
+      font-family: sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+    }
+    </style>
+</head>
+<body>
+    <h1><center>SAP BTP: Print Multiple QR Codes</center></h1>
+    <form method="POST">
+        <label for="input_data">Enter comma-separated values:</label><br>
+        <textarea id="input_data" name="input_data" rows="6" cols="50" placeholder="e.g., text1,text2,text3"></textarea><br><br>
+        <button type="submit">Generate QR Codes</button>
+    </form>
+
+<!-- reference: https://jinja.palletsprojects.com/en/stable/templates/#for-loop -->
+<!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr -->
+
+    {% if qr_images %}
+        <h2>Generate Multiple QR Codes</h2>
+        <table>
+            {% for qr_image in qr_images %}
+            {% if loop.index is divisibleby 6 %}            
+              <tr>  
+            {% endif %}    
+                <th scope="col">
+                <img src="{{ qr_image[0] }}" alt="QR Code" style="margin: 10px;">
+                {{ qr_image[1] }}
+                </th>        
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>
